@@ -6,12 +6,6 @@ import java.util.Map;
 
 import org.bond.webxm.entity.Userinfo;
 
-/**
- * SpringMVC+Hibernate +MySql+ EasyUI ---CRUD
- * 
- * @author 宗潇帅 类名称：UserDao
- * @date 2014-11-15 下午4:34:51 备注：
- */
 public class UserDao extends BaseDao {
 
 	public List<Map<String, Object>> list(String name, int start, int size, String order) {

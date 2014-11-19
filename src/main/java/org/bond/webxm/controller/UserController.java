@@ -1,12 +1,9 @@
 package org.bond.webxm.controller;
 
-import java.lang.annotation.Annotation;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,12 +20,6 @@ import org.bond.webxm.entity.Userinfo;
 import org.bond.webxm.service.UserService;
 import org.bond.webxm.util.StringUtil;
 
-/**
- * SpringMVC+Hibernate +MySql+ EasyUI ---CRUD
- * 
- * @author 宗潇帅 类名称：UserController
- * @date 2014-11-15 下午4:05:32 备注：
- */
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {

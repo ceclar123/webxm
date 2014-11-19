@@ -5,11 +5,6 @@ import java.util.List;
 
 import org.bond.webxm.dao.BaseDao;
 
-/**
- * SpringMVC+Hibernate +MySql+ EasyUI ---CRUD service层的共有父类，提供了简单的增删改查。
- * 
- *
- */
 public class BaseService {
 
 	BaseDao baseDao;

@@ -15,31 +15,29 @@
         http://www.springframework.org/schema/context/spring-context-3.2.xsd"
 	default-autowire="byName">
 
-
-	<aop:config>
-		<aop:pointcut id="testPointcut"
-			expression="execution(* org.bond.webxm.service..*.*(..))" />
-	</aop:config>
+	<context:component-scan base-package="org.bond.webxm.aop" />
 	<!-- 普通的AOP，如果想得到被代理的方法参数，那么就必须在配置里提前写好，这样有非常大的局限性 -->
-	<aop:config>
-		<aop:aspect ref="testSchemaAop">
-			<aop:before method="before" pointcut-ref="testPointcut" />
-			<aop:after-returning method="afterReturning"
-				pointcut-ref="testPointcut" returning="object" />
-			<aop:after-throwing method="afterThrowing"
-				pointcut-ref="testPointcut" throwing="object" />
-			<aop:after method="after" pointcut-ref="testPointcut" />
-		</aop:aspect>
-	</aop:config>
+	<!-- <aop:config> <aop:pointcut id="testPointcut" expression="execution(public 
+		* org.bond.webxm.service.*.*(..))" /> <aop:aspect ref="testSchemaAop"> <aop:before 
+		method="before" pointcut-ref="testPointcut" /> <aop:after-returning method="afterReturning" 
+		pointcut-ref="testPointcut" returning="object" /> <aop:after-throwing method="afterThrowing" 
+		pointcut-ref="testPointcut" throwing="object" /> <aop:after method="after" 
+		pointcut-ref="testPointcut" /> </aop:aspect> </aop:config> -->
 
-	<!-- 基于advisor的代理，代理类需要实现spring提供的接口，然后就可以用到强大的功能了。 -->
-	<aop:config>
-		<aop:advisor pointcut-ref="testPointcut" advice-ref="afterReturn" />
-	</aop:config>
+	<!-- 针对@AspectJ注解方式的切面 -->
+	<aop:aspectj-autoproxy expose-proxy="true" />
 
 	<!-- 需要由spring注入的bean定义 -->
+	<bean id="before" class="org.bond.webxm.aop.Before" />
 	<bean id="afterReturn" class="org.bond.webxm.aop.AfterReturn" />
 	<bean id="afterThrow" class="org.bond.webxm.aop.AfterThrow" />
-	<bean id="before" class="org.bond.webxm.aop.Before" />
-	<bean id="testSchemaAop" class="org.bond.webxm.aop.TestSchemaAop" />
+
+	<!-- 基于advisor的代理，代理类需要实现spring提供的接口，然后就可以用到强大的功能了。 -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="pointcut"
+			expression="execution(* org.bond.webxm.service.*.*(..))" />
+		<aop:advisor advice-ref="before" pointcut-ref="pointcut" />
+		<aop:advisor advice-ref="afterReturn" pointcut-ref="pointcut" />
+		<aop:advisor advice-ref="afterThrow" pointcut-ref="pointcut" />
+	</aop:config>
 </beans>

@@ -15,12 +15,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-/**
- * SpringMVC+Hibernate +MySql+ EasyUI ---CRUD dao层的共有父类，提供了常用的数据库操作方法。</br>
- * 
- *
- */
-
 public class BaseDao {
 	private static Log log = LogFactory.getLog(BaseDao.class);
 	protected SessionFactory sessionFactory;

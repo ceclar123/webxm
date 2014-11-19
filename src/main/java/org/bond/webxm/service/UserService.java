@@ -14,12 +14,6 @@ import org.bond.webxm.dao.UserDao;
 import org.bond.webxm.entity.Userinfo;
 import org.bond.webxm.util.StringUtil;
 
-/**
- * SpringMVC+Hibernate +MySql+ EasyUI ---CRUD
- * 
- * @author 宗潇帅 类名称：UserService
- * @date 2014-11-15 下午4:14:37 备注：
- */
 public class UserService extends BaseService {
 	UserDao userDao;
 

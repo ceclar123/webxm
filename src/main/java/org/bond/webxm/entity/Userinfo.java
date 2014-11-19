@@ -9,12 +9,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * SpringMVC+Hibernate +MySql+ EasyUI ---CRUD
- * 
- * @author 宗潇帅 类名称：Userinfo
- * @date 2014-11-15 下午1:37:47 备注：
- */
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "userinfo", catalog = "test")
